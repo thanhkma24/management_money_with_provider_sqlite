@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:manager_money_provider_sqlite/model/transactionModel.dart';
+import 'package:manager_money_provider_sqlite/model/transaction_model.dart';
 import 'package:manager_money_provider_sqlite/service/databaseHelper.dart';
 
 class ReportController with ChangeNotifier {
@@ -44,6 +44,23 @@ class ReportController with ChangeNotifier {
 
   }
 
-    void fetchTransaction() {
+    void fetchTransaction({DateTime? customFromDate, DateTime? customToDate}) async {
+    DateTime fromDate= customFromDate ?? DateTime.now();
+    DateTime toDate= customToDate ?? DateTime.now();
+
+    transactionList = [];
+
+    String fromDayPattern = 'd';
+    String fromMonthPattern = 'M';
+
+    String toDayPattern = 'd';
+    String toMonthPattern = 'M';
+
+    //format date
+      if(fromDate.day < 10 ) fromDayPattern = '0d';
+      if(fromDate.month < 10 ) fromMonthPattern = '0M';
+      if(toDate.day < 10 ) toMonthPattern = '0d';
+      if(toDate.month < 10 ) fromMonthPattern = '0M';
+
 
   }
